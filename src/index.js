@@ -1,24 +1,38 @@
 const {Command, flags} = require('@oclif/command')
+const {getRepoCreationDateFor, shiftDateOfOneDay, getFirstCommitUrlFor} = require('./utils')
+const {cli} = require('cli-ux')
 
 class EurekaCommand extends Command {
   async run() {
     const {flags} = this.parse(EurekaCommand)
-    const name = flags.name || 'world'
-    this.log(`hello ${name} from ./src/index.js`)
+    const fullName = flags.fullName
+
+    if (isCliPrompt(fullName)) {
+      const repoName = await cli.prompt('Enter repository name')
+      const repoAuthor = await cli.prompt('Enter repository author')
+      const creationDate = await getRepoCreationDateFor(repoAuthor, repoName)
+      const creationDatePlusOneDay = shiftDateOfOneDay(creationDate)
+      const firstCommitUrl = await getFirstCommitUrlFor(repoAuthor, repoName, creationDatePlusOneDay)
+
+      this.log(`Find out how everything started for ${repoName} here: ${firstCommitUrl}`)
+      return
+    }
+
+    const creationDate = await getRepoCreationDateFor(fullName)
+    const creationDatePlusOneDay = shiftDateOfOneDay(creationDate)
+    const firstCommitUrl = await getFirstCommitUrlFor(`${fullName}/${creationDatePlusOneDay}`)
+    this.log(`Check out how everything started for ${fullName} here: ${firstCommitUrl}`)
   }
 }
 
-EurekaCommand.description = `Describe the command here
-...
-Extra documentation goes here
-`
+function isCliPrompt(fullName) {
+  return typeof fullName === 'undefined'
+}
 
 EurekaCommand.flags = {
-  // add --version flag to show CLI version
   version: flags.version({char: 'v'}),
-  // add --help flag to show CLI version
   help: flags.help({char: 'h'}),
-  name: flags.string({char: 'n', description: 'name to print'}),
+  fullName: flags.string({char: 'f', description: 'full_name (repo-author/repo-name)'}),
 }
 
 module.exports = EurekaCommand
