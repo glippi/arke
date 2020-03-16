@@ -10,23 +10,39 @@ class EurekaCommand extends Command {
     if (isCliPrompt(fullName)) {
       const repoName = await cli.prompt('Enter repository name')
       const repoAuthor = await cli.prompt('Enter repository author')
+
       const creationDate = await getRepoCreationDateFor(repoAuthor, repoName)
-      const creationDatePlusOneDay = shiftDateOfOneDay(creationDate)
+      try{
+	const creationDatePlusOneDay = shiftDateOfOneDay(creationDate)
+      }
+      catch {
+	return
+      }
       const firstCommitUrl = await getFirstCommitUrlFor(repoAuthor, repoName, creationDatePlusOneDay)
 
-      this.log(`Find out how everything started for ${repoName} here: ${firstCommitUrl}`)
+      printMesage(repoName, firstCommitUrl)
       return
     }
 
     const creationDate = await getRepoCreationDateFor(fullName)
-    const creationDatePlusOneDay = shiftDateOfOneDay(creationDate)
+    try{
+      const creationDatePlusOneDay = shiftDateOfOneDay(creationDate)
+    }
+    catch {
+      return
+    }
     const firstCommitUrl = await getFirstCommitUrlFor(`${fullName}/${creationDatePlusOneDay}`)
-    this.log(`Check out how everything started for ${fullName} here: ${firstCommitUrl}`)
+
+    printMesage(fullName, firstCommitUrl)
   }
 }
 
 function isCliPrompt(fullName) {
   return typeof fullName === 'undefined'
+}
+
+function printMesage(name, commitUrl) {
+  this.log(`Find out how everything started for ${name} here: ${commitUrl}`)
 }
 
 EurekaCommand.flags = {

@@ -3,13 +3,21 @@ const fetch = require('node-fetch');
 async function getRepoCreationDateFor(author, repo) {
   if (arguments.length > 1) {
     const response = await fetch(`https://api.github.com/repos/${author}/${repo}`)
-    if (response.status === 200) {
-      const { created_at } = await response.json()
-      return created_at
-    } else if (response.status === 404) {
-      console.error("😅 Can't find what you are looking for. Probably there's a mispelling of the author, the repository or both")
-    } else {
-      console.error("🤦 Something went wrong!")
+    const { status } = response
+
+    switch(status)
+    {
+      case 200:
+	const { created_at } = await response.json()
+	return created_at
+      case 403:
+	console.error("👮️ API rate limit exceeded for your IP address.\nFor more details please check: https://developer.github.com/v3/#rate-limiting") 
+	break
+      case 404:
+	console.error("😅 Can't find what you are looking for. Probably there's a mispelling of the author, the repository or both")
+	break
+      default:
+	console.error("🤦 Something went wrong!")
     }
   }
   else {
