@@ -1,12 +1,12 @@
 {
-  "name": "eureka",
+  "name": "arke",
   "description": "Find out how everything started!",
   "version": "0.0.0",
   "author": "Gabriele Lippi @glippi",
   "bin": {
-    "eureka": "./bin/run"
+    "arke": "./bin/run"
   },
-  "bugs": "https://github.com/glippi/eureka/issues",
+  "bugs": "https://github.com/glippi/arke/issues",
   "dependencies": {
     "@oclif/command": "^1.5.19",
     "@oclif/config": "^1.14.0",
@@ -30,16 +30,16 @@
     "/bin",
     "/src"
   ],
-  "homepage": "https://github.com/glippi/eureka",
+  "homepage": "https://github.com/glippi/arke",
   "keywords": [
     "oclif"
   ],
   "license": "MIT",
   "main": "src/index.js",
   "oclif": {
-    "bin": "eureka"
+    "bin": "arke"
   },
-  "repository": "glippi/eureka",
+  "repository": "glippi/arke",
   "scripts": {
     "lint": "eslint --fix .",
     "prepack": "oclif-dev readme",
