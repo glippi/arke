@@ -16,14 +16,14 @@
 
 Often I found myself looking at a project that I like and thinking: "How does
 this thing start in the very beginning?", but then, finding the first commit it's
-not so straightforward; so...this how I met the idea of **arke**.
+not so straightforward; so...this is how I met the idea of **arke**.
 
 
 # What is Arke
 
 Arke is a **cli** utility, written in JavaScript, that given an **owner** and a **repository** will give you
-the url where you can find the first commit of the repository you are looking
-for.
+the url where you can find the first commit (or at least one of the very first!) of the repository you are looking
+for. The process is still not 100% exact right now, I'm still working on a more solid solution.
 
 
 # Installation
@@ -41,13 +41,13 @@ $ npx arke
 
 You can use arke in two ways:
 
-1) passing to the **-f** flag the **repositoryOwner** followed by a ***/** and the **repository**, for example:
+1) passing to the cli with **-f** flag the **repositoryOwner** followed by a **/** and the **repositoryName**, for example:
 
 ```sh-session
 $ npx arke -fglippi/arke
 ```
 
-2) answering the questions that cli will prompt to you, in this case you just have to write **arke** and hit enter:
+2) answering the questions that the cli will prompt to you, in this case you just have to write **arke** and hit enter:
 ```sh-session
 $ npx arke
 ```
