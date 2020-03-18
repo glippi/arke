@@ -1,7 +1,7 @@
 {
   "name": "arke",
   "description": "Find out how everything started!",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "author": "Gabriele Lippi @glippi",
   "bin": {
     "arke": "./bin/run"
