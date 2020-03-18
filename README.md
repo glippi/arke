@@ -3,14 +3,30 @@
 </p>
 
 # ἀρχή: how everything started
->Ἐν ἀρχῇ ἦν ὁ λόγος
+>the initial (starting) point
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/arke.svg)](https://npmjs.org/package/arke)
 [![Downloads/week](https://img.shields.io/npm/dw/arke.svg)](https://npmjs.org/package/arke)
 [![License](https://img.shields.io/npm/l/arke.svg)](https://github.com/glippi/arke/blob/master/package.json)
 
+
+# About
+
+Often I found myself looking at a project that I like and thinking: "How does
+this thing start in the very beginning?", but then, finding the first commit it's
+not so straightforward; so...this how I met the idea of **arke**.
+
+
+# What is Arke
+
+Arke is a **cli** utility, written in JavaScript, that given an **owner** and a **repository** will give you
+the url where you can find the first commit of the repository you are looking
+for.
+
+
 # Installation
+
 ```sh-session
 $ npm install -g arke
 ```
@@ -19,7 +35,9 @@ or you can immediately using it without the need of installation with:
 $ npx arke
 ```
 
+
 # Usage
+
 You can use arke in two ways:
 
 1) passing to the **-f** flag the **repositoryOwner** followed by a ***/** and the **repository**, for example:
@@ -37,3 +55,13 @@ then the cli will ask you for owner and repository name like below:
 $ Enter repository name
 $ Enter repository author
 ```
+
+
+## About the name
+
+*ἀρχή* is a greek word which means *beginning*. More details [here](https://www.biblehub.com/greek/746.htm)
+
+
+## License
+
+MIT
