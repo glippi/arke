@@ -7,6 +7,7 @@
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/arke.svg)](https://npmjs.org/package/arke)
+[![CircleCI](https://circleci.com/gh/glippi/arke.svg?style=svg)](https://circleci.com/gh/glippi/arke)
 [![Downloads/week](https://img.shields.io/npm/dw/arke.svg)](https://npmjs.org/package/arke)
 [![License](https://img.shields.io/npm/l/arke.svg)](https://github.com/glippi/arke/blob/master/package.json)
 
